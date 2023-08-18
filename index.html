@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #35424a;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 10px 10px lightblue;
+       
+            
+        }
+
+        label {
+            display: block;
+            margin-bottom:30px;
+            border-radius: 10px;
+            
+        }
+
+
+        select, button {
+            padding: 15px;
+            margin-bottom: 10px;
+            border: none;
+            background-color: #35424a;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border-radius: 20px;
+        }
+
+        select:hover, button:hover {
+            background-color: #1f2a30;
+           
+
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+        
+        .button-container button {
+            margin-right: 10px; /* Adjust this value to control the gap between buttons */
+        }
+
+        p#result {
+            margin-top: 15px;
+            font-size: 18px;
+            
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hello World API Webpage</h1>
+        <marquee behavior="scroll" direction="top">IGNITE SOLUTION</marquee>
+    </header>
+    <div class="container">
+        <label for="language">Select a language:</label>
+        <select id="language">
+            <option value="English">English</option>
+            <option value="French">French</option>
+            <option value="Hindi">Hindi</option>
+        </select>
+        <div class="button-container">
+            <button onclick="getHelloMessage()">click me get Hello Message</button>
+        </div>
+        <p id="helloMessage"></p>
+    </div>
+
+    <script>
+        function getHelloMessage() {
+            const selectedLanguage = document.getElementById("language").value;
+            const url = `/hello?language=${selectedLanguage}`;
+
+            fetch(url)
+                .then(response => response.text())
+                .then(message => {
+                    document.getElementById("helloMessage").textContent = message;
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                });
+        }
+    </script>
+</body>
+</html>
